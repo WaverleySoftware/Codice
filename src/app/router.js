@@ -16,11 +16,12 @@ define([
   'views/layout/activity_indicator',
   'views/layout/mobile-alert',
   'views/modals/modal-model',
-  'views/modals/modal'
+  'views/modals/modal',
+  'views/layout/landing'
 ], function($, deparam, _, Backbone, CityModel,
             CityBuildings, HeaderView, FooterView, MapView,
             AddressSearchView, YearControlView,
-            BuildingComparisonView, ActivityIndicator, MobileAlert, ModalModel, ModalController) {
+            BuildingComparisonView, ActivityIndicator, MobileAlert, ModalModel, ModalController, Landing) {
 
   var RouterState = Backbone.Model.extend({
     queryFields: ['filters', 'categories', 'layer', 'metrics', 'sort', 'order', 'lat', 'lng', 'zoom', 'building'],
@@ -104,6 +105,7 @@ define([
       var comparisonView = new BuildingComparisonView({state: this.state});
       var footerView = new FooterView({state: this.state});
       var mobileAlert = new MobileAlert({state: this.state});
+      var landing = new Landing({state: this.state});
 
       // $(window).on('resize.main', _.debounce(_.bind(this.onWindowResize, this), 200));
       // this.onWindowResize();
