@@ -24,7 +24,7 @@ define([
             this.state = options.state;
             this.template = _.template(LandingTemplate);
             this.cardTemplate = _.template(LandingCardsTemplate);
-            this.body = $('body');
+            this.mainContainer = $('.main-container');
 
             // when loader hide, we have all the data
             this.listenTo(this.state, 'hideActivityLoader', this.render);
@@ -50,7 +50,7 @@ define([
         },
 
         onContinue: function() {
-            this.body.removeClass('scroll-blocked');
+            this.mainContainer.removeClass('scroll-blocked');
             this.remove();
         },
 
@@ -82,7 +82,7 @@ define([
 
         buildD3Histogram: function (data) {
             var margin = {top: 60, right: 30, bottom: 60, left: 60};
-            var width = 860 - margin.left - margin.right;
+            var width = 900 - margin.left - margin.right;
             var height = 400 - margin.top - margin.bottom;
 
             var title = 'Average Site EUI';
@@ -90,6 +90,7 @@ define([
 
             var svg = d3.select('#landing-histogram')
                 .append('svg')
+                .style({width: '100%', height: '100%'})
                 .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
                 .attr('preserveAspectRatio', "xMidYMid meet")
                 .append('g')
@@ -301,7 +302,7 @@ define([
 
         render: function(){
             var city = this.state.get('city');
-            this.body.addClass('scroll-blocked');
+            this.mainContainer.addClass('scroll-blocked');
 
 
             this.$el.html(this.template({

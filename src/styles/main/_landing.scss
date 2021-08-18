@@ -1,30 +1,29 @@
 #landing {
   display: block;
   position: absolute;
-  top: $header-height;
+  top: $header-height + $toolbar-height;
   left: 0;
   width: 100%;
-  height: calc(100vh + 6em * 2);
+  height: calc(100vh + 6em);
   background: $base-background-color;
   z-index: $zIndex10;
 
   @include media($medium-screen-up) {
-    position: fixed;
-    height: calc(100vh - 6em);
+    height: calc(100vh + 2em);
   }
 
   .landing-main-container {
     color: $dark-gray;
-    margin: 3em 0;
-    padding: 3em 2em 0 2em;
+    margin: 0;
+    padding: 1em 2em 6cm 2em;
 
     @include media($medium-screen-up) {
-      padding: 3em 4em 0 4em;
+      padding: 1em 4em 6em 4em;
     }
 
     &--description {
       text-align: justify;
-      margin-bottom: 2em;
+      margin-bottom: 0.6em;
 
       span {
         font-weight: 600;
@@ -35,7 +34,7 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      margin-bottom: 2em;
+      margin-bottom: 0.6em;
 
       .card-block {
         border: $base-border-size solid $medium-gray;
@@ -173,16 +172,6 @@
       position: relative;
       top: 50%;
       transform: translateY(-50%);
-    }
-  }
-}
-
-body {
-  &.scroll-blocked {
-
-    @include media($medium-screen-up) {
-      height: 100vh;
-      overflow-y: hidden;
     }
   }
 }
